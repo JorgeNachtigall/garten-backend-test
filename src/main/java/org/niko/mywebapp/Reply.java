@@ -3,7 +3,7 @@ package org.niko.mywebapp;
 import com.j256.ormlite.field.DatabaseField;
 
 
-public class Replie {
+public class Reply {
 
 	public static final String ID_FIELD_NAME = "id";
 	public static final String AUTHOR_FIELD_NAME = "author";
@@ -21,19 +21,15 @@ public class Replie {
 	
 	@DatabaseField(canBeNull = false, columnName = CONTENT_FIELD_NAME)
     private String content;
-	
-	@DatabaseField(canBeNull = false, columnName = LIKES_FIELD_NAME)
-    private int likesNum;
-	
+		
 	@DatabaseField(canBeNull = false, foreign = true, columnName = TWEET_FIELD_NAME)
 	private transient Tweet tweet;
 	
-	Replie(){}
+	Reply(){}
 	
-	Replie(String author, String content, Tweet tweet){
+	Reply(String author, String content, Tweet tweet){
 		this.author = author;
 		this.content = content;
-		this.likesNum = 0;
 		this.tweet = tweet;
 	}
 	
@@ -48,13 +44,5 @@ public class Replie {
 	public String getContent() {
 		return this.content;
 	}
-	
-	public Integer getLikesSize() {
-		return this.likesNum;
-	}
-	
-	public void incrementLike() {
-		this.likesNum += 1;
-	}
-		
+			
 }

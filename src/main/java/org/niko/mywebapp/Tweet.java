@@ -34,9 +34,6 @@ public class Tweet {
 	Tweet(String author, String content){
 		this.author = author;
 		this.content = content;
-		this.likesNum = 0;
-		this.retweetsNum = 0;
-		this.repliesNum = 0;
 	}
 		
 	public String getAuthor() {
@@ -45,30 +42,5 @@ public class Tweet {
 		
 	public String getContent() {
 		return this.content;
-	}
-	
-	public Integer getLikesSize() {
-		return this.likesNum;
-	}
-	
-	public void incrementLike() {
-		this.likesNum += 1;
-	}
-	
-	public Integer getRetweetsSize() {
-		return this.retweetsNum;
-	}
-	
-	public void incrementRetweets() {
-		this.retweetsNum += 1;
-	}
-	
-	public Integer getRepliesSize() {
-		return this.repliesNum;
-	}
-	
-	public void incrementReplies() {
-		this.repliesNum += 1;
-	}
-		
+	}		
 }

@@ -31,18 +31,18 @@ public class Connection {
 	public void populateDatabase(){
 		try {
 			TableUtils.createTableIfNotExists(this.source, Tweet.class);
-			TableUtils.createTableIfNotExists(this.source, Replie.class);
+			TableUtils.createTableIfNotExists(this.source, Reply.class);
 			
 			Dao<Tweet, Integer> tweetsDao = DaoManager.createDao(this.source, Tweet.class);
 			
-			Dao<Replie, Integer> repliesDao = DaoManager.createDao(this.source, Replie.class);
+			Dao<Reply, Integer> repliesDao = DaoManager.createDao(this.source, Reply.class);
 			
 			
 			for(int i = 0; i < 5; i++) {
 				Tweet tweet = new Tweet("Jorge" + i, this.lorem.getWords(5, 10));
 				tweetsDao.create(tweet);
 				
-				Replie replie = new Replie("Dummy" + i, this.lorem.getWords(5, 10), tweet);
+				Reply replie = new Reply("Dummy" + i, this.lorem.getWords(5, 10), tweet);
 				repliesDao.create(replie);
 			}
 		} catch (SQLException e) {

@@ -15,7 +15,7 @@ public class Main {
 		Connection connection = new Connection();
 		
 		Dao<Tweet, Integer> tweetsDao = DaoManager.createDao(connection.source, Tweet.class);
-		Dao<Replie, Integer> repliesDao = DaoManager.createDao(connection.source, Replie.class);
+		Dao<Reply, Integer> repliesDao = DaoManager.createDao(connection.source, Reply.class);
 		
 		connection.populateDatabase();
 		                        
@@ -49,7 +49,7 @@ public class Main {
 			Tweet tweet = tweetsDao.queryForId(Integer.parseInt(req.params(":id")));
 			
 			if(tweet != null) {
-				List<Replie> replies = repliesDao.queryForEq(Replie.TWEET_FIELD_NAME, tweet);
+				List<Reply> replies = repliesDao.queryForEq(Reply.TWEET_FIELD_NAME, tweet);
 				if(!replies.isEmpty())
 					return new Gson().toJson(new Response(Status.SUCCESS, new Gson().toJsonTree(replies)));
 				else
@@ -65,24 +65,24 @@ public class Main {
 			Tweet tweet = new Gson().fromJson(req.body(), Tweet.class);
 			
 			if(tweetsDao.create(tweet) == 1)
-				return new Gson().toJson(new Response(Status.SUCCESS));
+				return new Gson().toJson(new Response(Status.SUCCESS, "Tweet created with success"));
 			else
 				return new Gson().toJson(new Response(Status.ERROR, "Can't create the requested tweet"));
 		});
 		
-		post("/tweet/:id/replie", (req, res) ->{
+		post("/tweet/:id/reply", (req, res) ->{
 			res.type("application/json");
 			
-			Replie replie = new Gson().fromJson(req.body(), Replie.class);
+			Reply reply = new Gson().fromJson(req.body(), Reply.class);
 			
 			Tweet tweet = tweetsDao.queryForId(Integer.parseInt(req.params(":id")));
 			
-			replie.setTweet(tweet);
+			reply.setTweet(tweet);
 			
-			if(repliesDao.create(replie) == 1)
-				return new Gson().toJson(new Response(Status.SUCCESS));
+			if(repliesDao.create(reply) == 1)
+				return new Gson().toJson(new Response(Status.SUCCESS, "Reply created with success"));
 			else
-				return new Gson().toJson(new Response(Status.ERROR, "Can't create the requested replie"));
+				return new Gson().toJson(new Response(Status.ERROR, "Can't create the requested reply"));
 		});
     }
 }
