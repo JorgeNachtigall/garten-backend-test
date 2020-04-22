@@ -42,8 +42,8 @@ public class Connection {
 				Tweet tweet = new Tweet("Jorge" + i, this.lorem.getWords(5, 10));
 				tweetsDao.create(tweet);
 				
-				Reply replie = new Reply("Dummy" + i, this.lorem.getWords(5, 10), tweet);
-				repliesDao.create(replie);
+				Reply reply = new Reply("Dummy" + i, this.lorem.getWords(5, 10), tweet);
+				repliesDao.create(reply);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

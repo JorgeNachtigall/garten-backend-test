@@ -20,14 +20,6 @@ public class Tweet {
 	@DatabaseField(canBeNull = false, columnName = CONTENT_FIELD_NAME)
     private String content;
 	
-	@DatabaseField(canBeNull = false, columnName = LIKES_FIELD_NAME)
-    private int likesNum;
-	
-	@DatabaseField(canBeNull = false, columnName = RETWEETS_FIELD_NAME)
-    private int retweetsNum;
-	
-	@DatabaseField(canBeNull = false, columnName = REPLIES_FIELD_NAME)
-    private int repliesNum;
 		
 	Tweet(){}
 	
