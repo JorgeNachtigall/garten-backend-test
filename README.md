@@ -168,12 +168,15 @@ Dentro da classe Connection é necessário modificar o DATABASE_URL para um dire
 * **Error Response:**
 
 
-    **Content:**    `{
+    **Content:**    
+    ```javascript
+    {
       {
         "status": "ERROR",
         "message": "Can't create the requested tweet"
     }
-}`
+    }
+    ```
 
 * **Body Sample Call:**
 
@@ -222,12 +225,14 @@ Dentro da classe Connection é necessário modificar o DATABASE_URL para um dire
 * **Error Response:**
 
 
-    **Content:**    `{
+    **Content:**    
+    ```javascript
+    {
     
         "status": "ERROR",
-        "message": "Can't create the requested reply"
-    
-}`
+        "message": "Can't create the requested reply"   
+    }
+    ```
 
 * **Body Sample Call:**
 
